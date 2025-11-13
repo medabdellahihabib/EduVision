@@ -1,0 +1,7 @@
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Nom utilisateur" required>
+    <input type="password" name="password" placeholder="Mot de passe" required>
+    <button type="submit">Se connecter</button>
+    {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+</form>
