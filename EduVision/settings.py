@@ -75,10 +75,21 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+
+import os
+
+# Template configuration
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # <- ton dossier global templates
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Add this line
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,8 +101,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
 
 
 
