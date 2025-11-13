@@ -3,11 +3,16 @@ from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+    
+
 class LoginView(View):
-    template_name = 'accounts/login.html'  # <-- juste relatif au dossier templates
+    template_name = 'accounts/login.html'
 
     def get(self, request):
+        print("Looking for template:", self.template_name)
+        print("Template directories:", [str(dir) for dir in TEMPLATES[0]['DIRS']])
         return render(request, self.template_name)
+
 
     def post(self, request):
         username = request.POST.get('username')
