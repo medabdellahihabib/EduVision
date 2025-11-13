@@ -2,17 +2,24 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-
-    
+from django.conf import settings  # Import settings to access TEMPLATES
 
 class LoginView(View):
     template_name = 'accounts/login.html'
 
     def get(self, request):
+        # Debug code to check template paths
+        template_dirs = settings.TEMPLATES[0]['DIRS']
         print("Looking for template:", self.template_name)
-        print("Template directories:", [str(dir) for dir in TEMPLATES[0]['DIRS']])
+        print("Template directories:", [str(dir) for dir in template_dirs])
+        
+        # Check if template exists
+        import os
+        for template_dir in template_dirs:
+            template_path = os.path.join(template_dir, self.template_name)
+            print(f"Checking: {template_path} -> Exists: {os.path.exists(template_path)}")
+        
         return render(request, self.template_name)
-
 
     def post(self, request):
         username = request.POST.get('username')
