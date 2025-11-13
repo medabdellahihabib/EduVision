@@ -918,3 +918,14 @@
                     const header = document.getElementById('header');
                     const mainContent = document.getElementById('mainContent');
                     
+                    if (!sidebar.classList.contains('closed')) {
+                        sidebar.classList.add('closed');
+                        header.classList.add('expanded');
+                        mainContent.classList.add('expanded');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
