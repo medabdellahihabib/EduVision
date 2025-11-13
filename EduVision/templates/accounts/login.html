@@ -1,56 +1,267 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - EduVision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .login-container {
-            max-width: 400px;
-            margin: 100px auto;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
         }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .logo {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .tagline {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-header {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .login-header h2 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .login-form {
+            padding: 30px;
+        }
+
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            position: relative;
         }
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0;
-            border: 1px solid #ddd;
-            border-radius: 3px;
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95rem;
         }
-        button {
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6a11cb;
+            font-size: 1.1rem;
+        }
+
+        .form-control {
             width: 100%;
-            padding: 10px;
-            background-color: #007bff;
+            padding: 14px 15px 14px 45px;
+            border: 2px solid #e1e5ee;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+
+        .form-control:focus {
+            border-color: #6a11cb;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+            outline: none;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             color: white;
             border: none;
-            border-radius: 3px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-        }
-        .error {
-            color: red;
+            transition: all 0.3s ease;
             margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .error {
+            color: #e74c3c;
+            background-color: rgba(231, 76, 60, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            text-align: center;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            color: #6a11cb;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #2575fc;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .login-form {
+                padding: 20px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div class="header">
+        <div class="logo">EduVision</div>
+        <p class="tagline"></p>
+    </div>
+
     <div class="login-container">
-        <h2>Connexion à EduVision</h2>
-        <form method="post">
+        <div class="login-header">
+            <h2>Connexion </h2>
+        </div>
+        
+        <form method="post" class="login-form">
             {% csrf_token %}
             <div class="form-group">
-                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                <label for="username">Nom d'utilisateur</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Entrez votre nom d'utilisateur" required>
+                </div>
             </div>
+            
             <div class="form-group">
-                <input type="password" name="password" placeholder="Mot de passe" required>
+                <label for="password">Mot de passe</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Entrez votre mot de passe" required>
+                </div>
             </div>
-            <button type="submit">Se connecter</button>
+            
+            <button type="submit" class="btn-login">Se connecter</button>
+            
             {% if error %}
-                <p class="error">{{ error }}</p>
+                <div class="error">{{ error }}</div>
             {% endif %}
+            
+            <div class="footer-links">
+                <a href="#">Mot de passe oublié ?</a>
+            </div>
         </form>
     </div>
+
+    <script>
+        // Ajout d'une animation d'entrée pour les champs de formulaire
+        document.addEventListener('DOMContentLoaded', function() {
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach((group, index) => {
+                group.style.opacity = '0';
+                group.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    group.style.transition = 'all 0.5s ease';
+                    group.style.opacity = '1';
+                    group.style.transform = 'translateY(0)';
+                }, 300 + (index * 100));
+            });
+        });
+    </script>
 </body>
 </html>
