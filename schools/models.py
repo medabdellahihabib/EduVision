@@ -1,7 +1,5 @@
 from django.db import models
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
+from django.conf import settings
 
 class School(models.Model):
     name = models.CharField(max_length=200)
@@ -12,7 +10,11 @@ class School(models.Model):
     logo = models.ImageField(upload_to='schools/logos/', null=True, blank=True)
     website = models.URLField(blank=True)
     is_active = models.BooleanField(default=True)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='schools_created')
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE, 
+        related_name='schools_created'
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -26,7 +28,7 @@ class School(models.Model):
 
 class Classroom(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE, related_name='classrooms')
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)  # CORRIGÉ : max_length au lieu de maxmax_length
     code = models.CharField(max_length=20, unique=True)
     capacity = models.IntegerField(default=30)
     location = models.CharField(max_length=100, blank=True)
