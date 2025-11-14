@@ -706,10 +706,14 @@
             {{ user.username|slice:":1"|upper }}
         {% endif %}
     </div>
+
+
     <div class="user-info">
         <h4>{{ user.get_full_name|default:user.username }}</h4>
         <p>{{ role|default:"Utilisateur" }}</p>
     </div>
+
+    
 </div>
 
 
