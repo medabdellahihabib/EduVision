@@ -700,7 +700,11 @@
 
 <div class="user-profile">
     <div class="user-avatar">
-        {{ user.get_full_name|default:user.username|truncatechars:2 }}
+        {% if user.get_full_name %}
+            {{ user.first_name|first|upper }}{{ user.last_name|first|upper }}
+        {% else %}
+            {{ user.username|slice:":1"|upper }}
+        {% endif %}
     </div>
     <div class="user-info">
         <h4>{{ user.get_full_name|default:user.username }}</h4>
@@ -714,12 +718,10 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="main-content" id="mainContent">
-        <div class="page-title">Welcome Back, John! 👋</div>
+        <div class="page-title">Welcome Back, {{ user.get_full_name|default:user.username }}! 👋</div>
         <div class="page-subtitle">Here's what's happening with your education platform today</div>
 
-        <!-- Stats Grid -->
         <div class="dashboard-grid">
             <div class="stat-card blue">
                 <div class="stat-icon">
