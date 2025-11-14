@@ -652,40 +652,28 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link" onclick="setActive(this)">
-                    <i class="fas fa-book"></i>
-                    <span>Courses</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link" onclick="setActive(this)">
-                    <i class="fas fa-users"></i>
-                    <span>Students</span>
-                </a>
-            </li>
+
+
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="setActive(this)">
                     <i class="fas fa-chart-bar"></i>
                     <span>Analytics</span>
                 </a>
             </li>
+
+
+
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="setActive(this)">
                     <i class="fas fa-tasks"></i>
                     <span>Assignments</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link" onclick="setActive(this)">
-                    <i class="fas fa-cog"></i>
-                    <span>Settings</span>
-                </a>
-            </li>
+
+
         </ul>
     </aside>
 
-    <!-- Header -->
     <header class="header" id="header">
         <div class="header-left">
             <button class="toggle-btn" onclick="toggleSidebar()">
@@ -745,6 +733,8 @@
                 </div>
             </div>
 
+
+
             <div class="stat-card green">
                 <div class="stat-icon">
                     <i class="fas fa-check-circle"></i>
@@ -755,6 +745,8 @@
                     <i class="fas fa-arrow-down"></i> 2.1% decrease
                 </div>
             </div>
+
+
 
             <div class="stat-card orange">
                 <div class="stat-icon">
@@ -879,7 +871,6 @@
             }
         });
 
-        // Notification click handlers
         const notificationIcons = document.querySelectorAll('.header-icon');
         notificationIcons.forEach(icon => {
             icon.addEventListener('click', function() {
